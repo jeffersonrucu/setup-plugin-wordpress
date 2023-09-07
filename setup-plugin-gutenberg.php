@@ -51,6 +51,7 @@ require_once ( ABSPATH . 'wp-admin/includes/plugin.php' );
 $setup = new Setup();
 $setup->initThemeAssets();
 $setup->initEditorAssets();
+$setup->initAdminAssets();
 $setup->initThemeSupport();
 
 /**
