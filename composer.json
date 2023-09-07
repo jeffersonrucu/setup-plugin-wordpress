@@ -1,0 +1,42 @@
+{
+  "name": "jefferson/setup-plugin",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "description": "WordPress starter plugin with a modern development workflow",
+  "homepage": "https://github.com/jeffersonrucu/setup-plugin-wordpress",
+  "authors": [
+    {
+      "name": "Jefferson Oliveira",
+      "email": "jefferoidtex7@gmail.com",
+      "homepage": "https://github.com/jeffersonrucu"
+    }
+  ],
+  "keywords": [
+    "wordpress",
+    "plugin"
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "./src/app/"
+    }
+  },
+  "require": {
+    "php": "^8.0",
+    "symfony/var-dumper": "^6.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "3.7.1"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "lint": [
+      "phpcs --extensions=php --standard=PSR12 src/app"
+    ]
+  }
+}

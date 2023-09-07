@@ -1,0 +1,35 @@
+name: Composer Lint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+
+    - name: Install Composer Dependencies
+      run: composer install --no-progress --no-suggest
+
+    - name: Run Composer Lint
+      run: composer lint
+
+    - name: Set Status Checks
+      run: echo ::set-output name=lint_result::success
+
+  approvals:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+    - name: Check for lint result
+      run: echo "Lint Result ${{needs.lint.outputs.lint_result}}"
