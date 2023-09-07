@@ -22,6 +22,7 @@
  * Update URI:
  */
 
+use App\Filters;
 use App\Providers\PluginConstants;
 use App\Setup;
 
@@ -51,3 +52,8 @@ $setup = new Setup();
 $setup->initThemeAssets();
 $setup->initEditorAssets();
 $setup->initThemeSupport();
+
+/**
+ * Initialize the Filters class.
+ */
+new Filters();
