@@ -58,7 +58,7 @@ class Setup
     {
         wp_enqueue_script(
             'setup-plugin-gutenberg-script',
-            PLUGIN_SETUP_GUTENBERG_DIST_SCRIPTS_URL . 'app.js',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_URL . 'app.js',
             [],
             null,
             true
@@ -66,7 +66,7 @@ class Setup
 
         wp_enqueue_style(
             'setup-plugin-gutenberg-style',
-            PLUGIN_SETUP_GUTENBERG_DIST_STYLES_URL . 'app.css',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_URL . 'app.css',
             [],
             null,
             'all'
@@ -82,7 +82,7 @@ class Setup
     {
         wp_enqueue_script(
             'setup-plugin-gutenberg-script',
-            PLUGIN_SETUP_GUTENBERG_DIST_SCRIPTS_URL . 'editor.js',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_URL . 'editor.js',
             [],
             null,
             true
@@ -90,7 +90,7 @@ class Setup
 
         wp_enqueue_style(
             'setup-plugin-gutenberg-style',
-            PLUGIN_SETUP_GUTENBERG_DIST_STYLES_URL . 'editor.css',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_URL . 'editor.css',
             [],
             null,
             'all'
@@ -106,7 +106,7 @@ class Setup
     {
         wp_enqueue_script(
             'setup-plugin-gutenberg-script',
-            PLUGIN_SETUP_GUTENBERG_DIST_SCRIPTS_URL . 'admin.js',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_URL . 'admin.js',
             [],
             null,
             true
@@ -114,7 +114,7 @@ class Setup
 
         wp_enqueue_style(
             'setup-plugin-gutenberg-style',
-            PLUGIN_SETUP_GUTENBERG_DIST_STYLES_URL . 'admin.css',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_URL . 'admin.css',
             [],
             null,
             'all'

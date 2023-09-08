@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES6",          /* Indica a versão do ECMAScript para a qual o código será compilado. */
+    "module": "ES6",          /* Define o sistema de módulos a ser utilizado. Neste caso, estamos usando ECMAScript 6 modules. */
+    "strict": true,           /* Habilita todas as verificações de modo estrito. */
+    "esModuleInterop": true,  /* Permite a interoperabilidade entre módulos CommonJS e ECMAScript. */
+    "forceConsistentCasingInFileNames": true, /* Garante consistência de maiúsculas e minúsculas em nomes de arquivos. */
+    "moduleResolution": "Bundler", /* Define o algoritmo de resolução de módulos para Node.js. */
+    "baseUrl": "./src/resources/scripts",       /* Define o caminho base para resolução de módulos. */
+    "outDir": "./public/scripts",       /* Especifica o diretório de saída para os arquivos compilados. */
+    "rootDir": "./src/resources/scripts",       /* Especifica o diretório raiz dos arquivos TypeScript. */
+    "declaration": false,      /* Gera arquivos de declaração (.d.ts). */
+    "strictNullChecks": true,  /* Habilita verificações estritas de null e undefined. */
+    "noImplicitAny": true,    /* Gera um erro se o TypeScript não puder inferir um tipo. */
+    "removeComments": true    /* Remove os comentários do código no arquivo compilado. */
+  },
+  "include": [
+    "./src/resources/scripts/**/*.ts"            /* Lista de padrões de arquivos que o compilador deve incluir. Neste caso, todos os arquivos TypeScript dentro da pasta "src". */
+  ],
+  "exclude": [
+    "node_modules"           /* Lista de pastas a serem excluídas do processo de compilação. */
+  ]
+}

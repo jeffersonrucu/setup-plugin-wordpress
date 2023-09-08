@@ -15,28 +15,10 @@ class PluginConstants
     private const PLUGIN_PREFIX = 'PLUGIN_SETUP_GUTENBERG';
 
     /**
-     * Absolute path to the plugin's root directory.
-     *
-     * @var string
-     */
-    private $pluginPath;
-
-    /**
-     * URL for the plugin's root directory.
-     *
-     * @var string
-     * @return void
-     */
-    private $pluginUrl;
-
-    /**
      * Initializes a new instance of the PluginConstants class.
      */
     public function setConstants(): void
     {
-        $this->pluginPath = plugin_dir_path(__FILE__);
-        $this->pluginUrl = plugin_dir_url(__FILE__);
-
         // Define the constant PLUGIN_SETUP_GUTENBERG_INDEX_URL with the URL of the current plugin directory
         $this->defineConstantUrl('INDEX_URL', '');
 
@@ -49,17 +31,17 @@ class PluginConstants
         // Define the constant PLUGIN_SETUP_GUTENBERG_ASSETS_PATH with the path to the assets directory
         $this->defineConstantPath('ASSETS_PATH', 'resources/assets/');
 
-        // Define the constant PLUGIN_SETUP_GUTENBERG_DIST_SCRIPTS_URL with the path to the scripts directory
-        $this->defineConstantUrl('DIST_SCRIPTS_URL', 'dist/assets/scripts/');
+        // Define the constant PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_URL with the path to the scripts directory
+        $this->defineConstantUrl('PUBLIC_SCRIPTS_URL', 'public/scripts/');
 
-        // Define the constant PLUGIN_SETUP_GUTENBERG_DIST_SCRIPTS_PATH with the path to the scripts directory
-        $this->defineConstantPath('DIST_SCRIPTS_PATH', 'dist/assets/scripts/');
+        // Define the constant PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_PATH with the path to the scripts directory
+        $this->defineConstantPath('PUBLIC_SCRIPTS_PATH', 'public/scripts/');
 
-        // Define the constant PLUGIN_SETUP_GUTENBERG_DIST_STYLES_URL with the path to the styles directory
-        $this->defineConstantUrl('DIST_STYLES_URL', 'dist/assets/styles/');
+        // Define the constant PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_URL with the path to the styles directory
+        $this->defineConstantUrl('PUBLIC_STYLES_URL', 'public/styles/');
 
-        // Define the constant PLUGIN_SETUP_GUTENBERG_DIST_STYLES_PATH with the path to the styles directory
-        $this->defineConstantPath('DIST_STYLES_PATH', 'dist/assets/styles/');
+        // Define the constant PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_PATH with the path to the styles directory
+        $this->defineConstantPath('PUBLIC_STYLES_PATH', 'public/styles/');
 
         // Define the constant PLUGIN_SETUP_GUTENBERG_LIBS_URL with the path to the libs directory
         $this->defineConstantUrl('LIBS_URL', 'resources/assets/libs/');
@@ -107,7 +89,7 @@ class PluginConstants
      */
     private function defineConstantPath($name, $suffix): void
     {
-        define(self::PLUGIN_PREFIX . '_' . $name, $this->pluginPath . $suffix);
+        define(self::PLUGIN_PREFIX . '_' . $name, PLUGIN_SETUP_GUTENBERG_PATH . $suffix);
     }
 
     /**
@@ -119,6 +101,6 @@ class PluginConstants
      */
     private function defineConstantUrl($name, $suffix): void
     {
-        define(self::PLUGIN_PREFIX . '_' . $name, $this->pluginUrl . $suffix);
+        define(self::PLUGIN_PREFIX . '_' . $name, PLUGIN_SETUP_GUTENBERG_URL . $suffix);
     }
 }

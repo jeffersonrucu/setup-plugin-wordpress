@@ -43,6 +43,10 @@ require_once ( ABSPATH . 'wp-admin/includes/plugin.php' );
 /**
  * Initializes plugin constants.
  */
+
+define('PLUGIN_SETUP_GUTENBERG_PATH', plugin_dir_path(__FILE__));
+define('PLUGIN_SETUP_GUTENBERG_URL', plugin_dir_url(__FILE__));
+
 (new PluginConstants())->setConstants();
 
 /**
