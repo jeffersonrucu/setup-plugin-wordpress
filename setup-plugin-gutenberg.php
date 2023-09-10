@@ -57,6 +57,7 @@ $setup->initThemeAssets();
 $setup->initEditorAssets();
 $setup->initAdminAssets();
 $setup->initThemeSupport();
+$setup->registerCustomTemplates();
 
 /**
  * Initialize the Filters class.

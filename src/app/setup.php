@@ -142,4 +142,45 @@ class Setup
             'style',
         ]);
     }
+
+    /**
+     * Register custom templates from the plugin directory.
+     *
+     * This method scans a specified directory within the plugin for custom template files.
+     * It extracts the "Template Name" information from each file's metadata and integrates
+     * these templates into the WordPress theme's available page templates.
+     * Additionally, it ensures that the custom template is applied when necessary.
+     *
+     * @return void
+     */
+    public function registerCustomTemplates(): void
+    {
+        $templateDirectory = PLUGIN_SETUP_GUTENBERG_PATH . 'src/resources/views/';
+        $templateFiles = glob($templateDirectory . 'template-*.php');
+
+        foreach ($templateFiles as $template) {
+            $fileData = get_file_data($template, array('Template Name' => 'Template Name'));
+            $templateName = $fileData['Template Name'];
+
+            $nameFile = explode("resources/views/", $template);
+
+            // register model
+            add_filter('theme_page_templates', function($templates) use ($nameFile, $templateName) {
+                $templates[$nameFile[1]] = $templateName;
+                return $templates;
+            });
+
+            // use model
+            add_filter('page_template', function($template) use ($nameFile, $templateDirectory) {
+                $post = get_post();
+                $pageTemplate = get_post_meta($post->ID, '_wp_page_template', true);
+
+                if ($nameFile[1] == basename($pageTemplate)) {
+                    return $templateDirectory . $nameFile[1];
+                }
+
+                return $template;
+            });
+        }
+    }
 }

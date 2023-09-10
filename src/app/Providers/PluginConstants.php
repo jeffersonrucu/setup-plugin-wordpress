@@ -25,12 +25,6 @@ class PluginConstants
         // Define the constant PLUGIN_SETUP_GUTENBERG_PATH with the path to the root directory of the plugin
         $this->defineConstantPath('INDEX_PATH', '');
 
-        // Define the constant PLUGIN_SETUP_GUTENBERG_ASSETS_URL with the path to the assets directory
-        $this->defineConstantUrl('ASSETS_URL', 'resources/assets/');
-
-        // Define the constant PLUGIN_SETUP_GUTENBERG_ASSETS_PATH with the path to the assets directory
-        $this->defineConstantPath('ASSETS_PATH', 'resources/assets/');
-
         // Define the constant PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_URL with the path to the scripts directory
         $this->defineConstantUrl('PUBLIC_SCRIPTS_URL', 'public/scripts/');
 
@@ -42,12 +36,6 @@ class PluginConstants
 
         // Define the constant PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_PATH with the path to the styles directory
         $this->defineConstantPath('PUBLIC_STYLES_PATH', 'public/styles/');
-
-        // Define the constant PLUGIN_SETUP_GUTENBERG_LIBS_URL with the path to the libs directory
-        $this->defineConstantUrl('LIBS_URL', 'resources/assets/libs/');
-
-        // Define the constant PLUGIN_SETUP_GUTENBERG_LIBS_PATH with the path to the libs directory
-        $this->defineConstantPath('LIBS_PATH', 'resources/assets/libs/');
 
         // Define the constant PLUGIN_SETUP_GUTENBERG_FIELDS_URL with the path to the fields directory
         $this->defineConstantUrl('FIELDS_URL', 'app/Classes/Libs/Acf/Fields/');
@@ -62,22 +50,22 @@ class PluginConstants
         $this->defineConstantPath('ADMIN_PAGES_PATH', 'app/Controllers/Admin/Pages/');
 
         // Define the constant PLUGIN_SETUP_GUTENBERG_ADMIN_VIEWS_URL with the path to the admin views directory
-        $this->defineConstantUrl('ADMIN_VIEWS_URL', 'resources/views/admin/');
+        $this->defineConstantUrl('ADMIN_VIEWS_URL', 'src/resources/views/admin/');
 
         // Define the constant PLUGIN_SETUP_GUTENBERG_ADMIN_VIEWS_PATH with the path to the admin views directory
-        $this->defineConstantPath('ADMIN_VIEWS_PATH', 'resources/views/admin/');
+        $this->defineConstantPath('ADMIN_VIEWS_PATH', 'src/resources/views/admin/');
+
+        // Define the constant PLUGIN_SETUP_GUTENBERG_VIEWS_PATH with the path to the blocks views directory
+        $this->defineConstantPath('VIEWS_PATH', 'src/resources/views/');
+
+        // Define the constant PLUGIN_SETUP_GUTENBERG_VIEWS_URL with the path to the blocks views directory
+        $this->defineConstantUrl('VIEWS_URL', 'src/resources/views/');
 
         // Define the constant PLUGIN_SETUP_GUTENBERG_BLOCKS_URL with the path to the blocks directory
         $this->defineConstantUrl('BLOCKS_URL', 'app/Blocks/');
 
         // Define the constant PLUGIN_SETUP_GUTENBERG_BLOCKS_PATH with the path to the blocks directory
         $this->defineConstantPath('BLOCKS_PATH', 'app/Blocks/');
-
-        // Define the constant PLUGIN_SETUP_GUTENBERG_BLOCKS_VIEWS_URL with the path to the blocks views directory
-        $this->defineConstantPath('BLOCKS_VIEWS_URL', 'resources/views/blocks/');
-
-        // Define the constant PLUGIN_SETUP_GUTENBERG_BLOCKS_VIEWS with the path to the blocks views directory
-        $this->defineConstantUrl('BLOCKS_VIEWS', 'resources/views/blocks/');
     }
 
     /**
