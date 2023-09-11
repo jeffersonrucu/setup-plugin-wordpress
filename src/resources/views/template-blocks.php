@@ -2,10 +2,12 @@
 /*
     Template Name: Gutenberg Blocks Page
 */
+?>
 
-use App\Providers\Helpers;
+<?php
+    use App\Providers\Helpers;
 
-$helpers = new Helpers;
+    $helpers = new Helpers;
 ?>
 
 <?php echo $helpers->templateRenderer('layouts/app-init'); ?>
