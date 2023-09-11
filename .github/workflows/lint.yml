@@ -24,6 +24,9 @@ jobs:
     - name: Run Composer Lint
       run: composer lint
 
+    - name: Run Node Lint
+      run: npm run lint
+
     - name: Set Status Checks
       run: echo ::set-output name=lint_result::success
 
