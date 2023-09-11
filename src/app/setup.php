@@ -165,13 +165,13 @@ class Setup
             $nameFile = explode("resources/views/", $template);
 
             // register model
-            add_filter('theme_page_templates', function($templates) use ($nameFile, $templateName) {
+            add_filter('theme_page_templates', function ($templates) use ($nameFile, $templateName) {
                 $templates[$nameFile[1]] = $templateName;
                 return $templates;
             });
 
             // use model
-            add_filter('page_template', function($template) use ($nameFile, $templateDirectory) {
+            add_filter('page_template', function ($template) use ($nameFile, $templateDirectory) {
                 $post = get_post();
                 $pageTemplate = get_post_meta($post->ID, '_wp_page_template', true);
 
