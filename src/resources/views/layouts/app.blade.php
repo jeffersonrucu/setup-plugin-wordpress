@@ -8,10 +8,7 @@
     </head>
 
     <body {{ body_class() }} >
-        @php
-            wp_body_open();
-            do_action('get_header');
-        @endphp
+        @php wp_body_open(); @endphp
 
         @include('sections.header')
 
@@ -21,9 +18,6 @@
 
         @include('sections.footer')
 
-        @php
-            do_action('get_footer');
-            wp_footer();
-        @endphp
+        @php wp_footer(); @endphp
     </body>
 </html>
