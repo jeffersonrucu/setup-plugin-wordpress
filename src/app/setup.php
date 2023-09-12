@@ -159,14 +159,15 @@ class Setup
         $templateFiles = glob($templateDirectory . 'template-*.php');
 
         foreach ($templateFiles as $template) {
-            $fileData = get_file_data($template, array('Template Name' => 'Template Name'));
-            $templateName = $fileData['Template Name'];
+            $templateName = get_file_data($template, array('Template Name' => 'Template Name'));
+            $templateName = $templateName['Template Name'];
 
-            $nameFile = explode("resources/views/", $template);
+            $nameFile = explode("views/", $template);
+            $nameFile = $nameFile[1];
 
             // register model
             add_filter('theme_page_templates', function ($templates) use ($nameFile, $templateName) {
-                $templates[$nameFile[1]] = $templateName;
+                $templates[$nameFile] = $templateName;
                 return $templates;
             });
 
@@ -175,8 +176,9 @@ class Setup
                 $post = get_post();
                 $pageTemplate = get_post_meta($post->ID, '_wp_page_template', true);
 
-                if ($nameFile[1] == basename($pageTemplate)) {
-                    return $templateDirectory . $nameFile[1];
+                if ($nameFile == basename($pageTemplate)) {
+                    $nameBlade = explode('.blade.php', $nameFile)[0];
+                    \blade($nameBlade);
                 }
 
                 return $template;
