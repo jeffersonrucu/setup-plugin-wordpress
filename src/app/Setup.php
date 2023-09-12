@@ -58,7 +58,7 @@ class Setup
     {
         wp_enqueue_script(
             'setup-plugin-gutenberg-script',
-            PLUGIN_SETUP_GUTENBERG_DIST_SCRIPTS_URL . 'app.js',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_URL . 'app.js',
             [],
             null,
             true
@@ -66,7 +66,7 @@ class Setup
 
         wp_enqueue_style(
             'setup-plugin-gutenberg-style',
-            PLUGIN_SETUP_GUTENBERG_DIST_STYLES_URL . 'app.css',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_URL . 'app.css',
             [],
             null,
             'all'
@@ -82,7 +82,7 @@ class Setup
     {
         wp_enqueue_script(
             'setup-plugin-gutenberg-script',
-            PLUGIN_SETUP_GUTENBERG_DIST_SCRIPTS_URL . 'editor.js',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_URL . 'editor.js',
             [],
             null,
             true
@@ -90,7 +90,7 @@ class Setup
 
         wp_enqueue_style(
             'setup-plugin-gutenberg-style',
-            PLUGIN_SETUP_GUTENBERG_DIST_STYLES_URL . 'editor.css',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_URL . 'editor.css',
             [],
             null,
             'all'
@@ -106,7 +106,7 @@ class Setup
     {
         wp_enqueue_script(
             'setup-plugin-gutenberg-script',
-            PLUGIN_SETUP_GUTENBERG_DIST_SCRIPTS_URL . 'admin.js',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_URL . 'admin.js',
             [],
             null,
             true
@@ -114,7 +114,7 @@ class Setup
 
         wp_enqueue_style(
             'setup-plugin-gutenberg-style',
-            PLUGIN_SETUP_GUTENBERG_DIST_STYLES_URL . 'admin.css',
+            PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_URL . 'admin.css',
             [],
             null,
             'all'
@@ -141,5 +141,48 @@ class Setup
             'script',
             'style',
         ]);
+    }
+
+    /**
+     * Register custom templates from the plugin directory.
+     *
+     * This method scans a specified directory within the plugin for custom template files.
+     * It extracts the "Template Name" information from each file's metadata and integrates
+     * these templates into the WordPress theme's available page templates.
+     * Additionally, it ensures that the custom template is applied when necessary.
+     *
+     * @return void
+     */
+    public function registerCustomTemplates(): void
+    {
+        $templateDirectory = PLUGIN_SETUP_GUTENBERG_PATH . 'src/resources/views/';
+        $templateFiles = glob($templateDirectory . 'template-*.php');
+
+        foreach ($templateFiles as $template) {
+            $templateName = get_file_data($template, array('Template Name' => 'Template Name'));
+            $templateName = $templateName['Template Name'];
+
+            $nameFile = explode("views/", $template);
+            $nameFile = $nameFile[1];
+
+            // register model
+            add_filter('theme_page_templates', function ($templates) use ($nameFile, $templateName) {
+                $templates[$nameFile] = $templateName;
+                return $templates;
+            });
+
+            // use model
+            add_filter('page_template', function ($template) use ($nameFile, $templateDirectory) {
+                $post = get_post();
+                $pageTemplate = get_post_meta($post->ID, '_wp_page_template', true);
+
+                if ($nameFile == basename($pageTemplate)) {
+                    $nameBlade = explode('.blade.php', $nameFile)[0];
+                    \blade($nameBlade);
+                }
+
+                return $template;
+            });
+        }
     }
 }

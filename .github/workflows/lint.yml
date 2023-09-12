@@ -1,4 +1,4 @@
-name: Composer Lint
+name: Composer and Node Lint
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  lint:
+  composer_lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,12 +24,39 @@ jobs:
     - name: Run Composer Lint
       run: composer lint
 
-    - name: Set Status Checks
+    - name: Set Composer Lint Status Check
+      run: echo ::set-output name=lint_result::success
+
+  node_lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install Node.js Dependencies
+      run: npm install
+
+    - name: Run Node Lint
+      run: npm run lint
+
+    - name: Set Node Lint Status Check
       run: echo ::set-output name=lint_result::success
 
   approvals:
     runs-on: ubuntu-latest
-    needs: lint
+    needs:
+      - composer_lint
+      - node_lint
+
     steps:
-    - name: Check for lint result
-      run: echo "Lint Result ${{needs.lint.outputs.lint_result}}"
+    - name: Check Composer Lint Result
+      run: echo "Composer Lint Result ${{needs.composer_lint.outputs.lint_result}}"
+
+    - name: Check Node Lint Result
+      run: echo "Node Lint Result ${{needs.node_lint.outputs.lint_result}}"
