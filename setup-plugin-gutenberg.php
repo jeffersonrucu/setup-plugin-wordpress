@@ -45,7 +45,20 @@ require_once ( ABSPATH . 'wp-admin/includes/plugin.php' );
  */
 define('PLUGIN_SETUP_GUTENBERG_PATH', plugin_dir_path(__FILE__));
 define('PLUGIN_SETUP_GUTENBERG_URL', plugin_dir_url(__FILE__));
-(new PluginConstants())->setConstants();
+define('PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_URL', PLUGIN_SETUP_GUTENBERG_URL . 'public/scripts/');
+define('PLUGIN_SETUP_GUTENBERG_PUBLIC_SCRIPTS_PATH', PLUGIN_SETUP_GUTENBERG_PATH . 'public/scripts/');
+define('PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_URL', PLUGIN_SETUP_GUTENBERG_URL . 'public/styles/');
+define('PLUGIN_SETUP_GUTENBERG_PUBLIC_STYLES_PATH', PLUGIN_SETUP_GUTENBERG_PATH . 'public/styles/');
+define('PLUGIN_SETUP_GUTENBERG_FIELDS_URL', PLUGIN_SETUP_GUTENBERG_URL . 'app/Classes/Libs/Acf/Fields/');
+define('PLUGIN_SETUP_GUTENBERG_FIELDS_PATH', PLUGIN_SETUP_GUTENBERG_PATH . 'app/Classes/Libs/Acf/Fields/');
+define('PLUGIN_SETUP_GUTENBERG_ADMIN_PAGES_URL', PLUGIN_SETUP_GUTENBERG_URL . 'app/Controllers/Admin/Pages/');
+define('PLUGIN_SETUP_GUTENBERG_ADMIN_PAGES_PATH', PLUGIN_SETUP_GUTENBERG_PATH . 'app/Controllers/Admin/Pages/');
+define('PLUGIN_SETUP_GUTENBERG_ADMIN_VIEWS_URL', PLUGIN_SETUP_GUTENBERG_URL . 'src/resources/views/admin/');
+define('PLUGIN_SETUP_GUTENBERG_ADMIN_VIEWS_PATH', PLUGIN_SETUP_GUTENBERG_PATH . 'src/resources/views/admin/');
+define('PLUGIN_SETUP_GUTENBERG_VIEWS_PATH', PLUGIN_SETUP_GUTENBERG_PATH . 'src/resources/views/');
+define('PLUGIN_SETUP_GUTENBERG_VIEWS_URL', PLUGIN_SETUP_GUTENBERG_URL . 'src/resources/views/');
+define('PLUGIN_SETUP_GUTENBERG_BLOCKS_URL', PLUGIN_SETUP_GUTENBERG_URL . 'app/Blocks/');
+define('PLUGIN_SETUP_GUTENBERG_BLOCKS_PATH', PLUGIN_SETUP_GUTENBERG_PATH . 'app/Blocks/');
 
 /**
  * Initialize the Setup class.
@@ -62,9 +75,3 @@ $setup->registerCustomTemplates();
  * Initialize the Filters class.
  */
 new Filters();
-
-
-// add_filter( 'template_include', 'portfolio_page_template', 99 );
-// function portfolio_page_template( $template ) {
-//     \blade('template-blocks');
-// }
