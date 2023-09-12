@@ -15,13 +15,12 @@ class Filters
     }
 
     /**
-	 * bladeViewPaths Set base path to blade views
-	 *
-	 * @return string New path to blade views
-	 */
-	public function bladeViewPaths(): string
+     * bladeViewPaths Set base path to blade views
+     *
+     * @return string New path to blade views
+     */
+    public function bladeViewPaths(): string
     {
-		// Set theme base path
-		return PLUGIN_SETUP_GUTENBERG_VIEWS_PATH;
-	}
+        return PLUGIN_SETUP_GUTENBERG_VIEWS_PATH;
+    }
 }
