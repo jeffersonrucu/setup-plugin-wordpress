@@ -185,4 +185,18 @@ class Setup
             });
         }
     }
+
+    public function registerBlocks()
+    {
+        $blocks = PLUGIN_SETUP_GUTENBERG_PATH . 'src/app/View/Blocks/';
+        $blocksFiles = glob($blocks . '*.php');
+
+        foreach ( $blocksFiles as $block ) {
+            $class_name   = basename( $block, '.php');
+            $block_name   = 'App\View\Blocks\\' . $class_name;
+            if ( class_exists( $block_name ) ) {
+                new $block_name;
+            }
+        }
+    }
 }

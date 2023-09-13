@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 const options = {
@@ -7,13 +8,21 @@ const options = {
   emitWarning: true,
 };
 
+const sourceDirectory = 'src/resources/scripts/wordpress/blocks';
+const outputDirectory = 'public/scripts/wordpress/blocks';
+
+const entry = {};
+
+fs.readdirSync(sourceDirectory).forEach(file => {
+  if (file.endsWith('.ts')) {
+    const fileName = path.basename(file, '.ts');
+    entry[fileName] = path.resolve(sourceDirectory, file);
+  }
+});
+
 module.exports = {
   mode: 'development',
-  entry: {
-    app: path.resolve(__dirname, './src/resources/scripts/app.ts'),
-    editor: path.resolve(__dirname, './src/resources/scripts/editor.ts'),
-    admin: path.resolve(__dirname, './src/resources/scripts/admin.ts'),
-  },
+  entry,
   module: {
     rules: [
       {
@@ -28,7 +37,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'public/scripts'),
+    path: path.resolve(__dirname, outputDirectory),
   },
   plugins: [new ESLintPlugin(options)],
 };
