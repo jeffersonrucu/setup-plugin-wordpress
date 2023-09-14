@@ -22,7 +22,8 @@
   },
   "require": {
     "php": "^8.0",
-    "fiskhandlarn/blade": "^0.6.2"
+    "fiskhandlarn/blade": "^0.6.2",
+    "stoutlogic/acf-builder": "^1.12"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.7.1",

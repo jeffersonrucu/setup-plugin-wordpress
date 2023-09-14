@@ -23,8 +23,9 @@
  */
 
 use App\Filters;
-use App\Providers\PluginConstants;
+use App\Providers\Block;
 use App\Setup;
+use App\View\Blocks\BlockExample;
 
 if (!file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
     wp_die(__(
@@ -71,9 +72,10 @@ $setup->initEditorAssets();
 $setup->initAdminAssets();
 $setup->initThemeSupport();
 $setup->registerCustomTemplates();
-
+$setup->registerBlocks();
 
 /**
  * Initialize the Filters class.
  */
 new Filters();
+
