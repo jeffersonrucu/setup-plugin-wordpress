@@ -89,7 +89,7 @@ class BlockExample
      */
     public function registerFields(): void
     {
-        acf_add_local_field_group( $this->fields() );
+        acf_add_local_field_group($this->fields());
     }
 
     /**
@@ -97,7 +97,8 @@ class BlockExample
      *
      * @return array
      */
-    public function fields() {
+    public function fields()
+    {
         $fields = new FieldsBuilder($this->slug);
 
         $fields
@@ -110,7 +111,7 @@ class BlockExample
             ])
             ->addAccordion('accordion_data_end')->endpoint()
 
-            ->setLocation( 'block', '==', "acf/$this->slug" );
+            ->setLocation('block', '==', "acf/$this->slug");
 
         return $fields->build();
     }
@@ -124,11 +125,29 @@ class BlockExample
     {
         return  [
             'style'  => [
-                ['slick-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css', [], '1.8.1', 'all'],
-                ['slick-theme-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css', [], '1.8.1', 'all'],
+                [
+                    'slick-css',
+                    'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css',
+                    [],
+                    '1.8.1',
+                    'all'
+                ],
+                [
+                    'slick-theme-css',
+                    'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css',
+                    [],
+                    '1.8.1',
+                    'all'
+                ],
             ],
             'script' => [
-                ['slick-js', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', ['jquery'], '1.8.1', false]
+                [
+                    'slick-js',
+                    'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',
+                    ['jquery'],
+                    '1.8.1',
+                    false
+                ]
             ]
         ];
     }

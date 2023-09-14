@@ -1,1 +1,1 @@
-<button> {{ $label }} </button>
+<button data-js="button"> {{ $label }} </button>

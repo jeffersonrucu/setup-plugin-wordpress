@@ -1,16 +1,28 @@
-class BlockExample {
-  block: NodeListOf<HTMLElement>;
+class BlockExample extends HTMLElement {
+  block: HTMLElement;
+
+  buttons: NodeListOf<HTMLElement>;
 
   constructor() {
-    this.block = document.querySelectorAll('[data-block="block-example"]');
+    super();
+
+    this.block = this;
+    this.buttons = this.querySelectorAll('[data-js="button"]');
+
+    this.initButton();
   }
 
-  init() {
-    console.log(this.block);
+  initButton() {
+    if (this.buttons.length < 1) return;
+
+    this.buttons.forEach((button) => {
+      button.addEventListener('click', this.handleButton);
+    });
+  }
+
+  handleButton() {
+    console.log(this);
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const blockExample = new BlockExample();
-  blockExample.init();
-});
+customElements.define('block-example', BlockExample);
