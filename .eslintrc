@@ -8,5 +8,8 @@
     "max-len": [1, 120, 2, { "ignoreComments": true }],
     "no-console": "off"
   },
-  "ignorePatterns": ["webpack.config.js"],
+  "ignorePatterns": [
+    "webpack.config.js",
+    "tailwind.config.js"
+  ]
 }
