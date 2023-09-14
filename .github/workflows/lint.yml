@@ -85,4 +85,3 @@ jobs:
 
     - name: Check CSS Lint Result
       run: echo "Node Lint Result ${{needs.css_lint.outputs.lint_result}}"
-
