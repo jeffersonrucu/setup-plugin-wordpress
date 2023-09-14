@@ -1,4 +1,4 @@
-name: Composer and Node Lint
+name: lint
 
 on:
   pull_request:
