@@ -43,7 +43,28 @@ jobs:
       run: npm install
 
     - name: Run Node Lint
-      run: npm run lint
+      run: npm run lint:js
+
+    - name: Set Node Lint Status Check
+      run: echo ::set-output name=lint_result::success
+
+  css_lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install Node.js Dependencies
+      run: npm install
+
+    - name: Run Node Lint
+      run: npm run lint:css
 
     - name: Set Node Lint Status Check
       run: echo ::set-output name=lint_result::success
@@ -53,6 +74,7 @@ jobs:
     needs:
       - composer_lint
       - node_lint
+      - css_lint
 
     steps:
     - name: Check Composer Lint Result
@@ -60,3 +82,6 @@ jobs:
 
     - name: Check Node Lint Result
       run: echo "Node Lint Result ${{needs.node_lint.outputs.lint_result}}"
+
+    - name: Check CSS Lint Result
+      run: echo "Node Lint Result ${{needs.css_lint.outputs.lint_result}}"

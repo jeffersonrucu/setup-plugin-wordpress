@@ -1,7 +1,13 @@
-@import 'vendors/index.css';
-@import 'abstracts/index.css';
-@import 'base/index.css';
-@import 'components/index.css';
-@import 'layout/index.css';
-@import 'pages/index.css';
-@import 'themes/index.css';
+/* Lib */
+@import url('tailwindcss/base');
+@import url('tailwindcss/components');
+@import url('tailwindcss/utilities');
+
+/* Custom */
+@import url('vendors/index.css');
+@import url('abstracts/index.css');
+@import url('base/index.css');
+@import url('components/index.css');
+@import url('layout/index.css');
+@import url('pages/index.css');
+@import url('themes/index.css');
