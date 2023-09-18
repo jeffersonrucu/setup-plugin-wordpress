@@ -4,7 +4,7 @@
   },
   "private": true,
   "scripts": {
-    "build": "webpack && eslint src/resources --ignore-pattern node_modules --ignore-pattern vendor && tailwindcss build src/resources/styles/app.css -o public/styles/app.css && tailwindcss build src/resources/styles/editor.css -o public/styles/editor.css && tailwindcss build src/resources/styles/admin.css -o public/styles/admin.css",
+    "build": "webpack && eslint src/resources --ignore-pattern node_modules --ignore-pattern vendor && tailwindcss build src/resources/styles/app.css -o public/styles/app.css --minify && tailwindcss build src/resources/styles/editor.css -o public/styles/editor.css --minify && tailwindcss build src/resources/styles/admin.css -o public/styles/admin.css --minify",
     "lint:js": "eslint src/resources --ignore-pattern node_modules --ignore-pattern vendor",
     "lint:css": "npx stylelint 'src/resources/styles/**/*.css'",
     "lint:php": "composer lint"
